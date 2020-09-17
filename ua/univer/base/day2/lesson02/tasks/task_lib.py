@@ -56,9 +56,9 @@ def task06_pow(x, n):
 def task08_draw_shape():
 
     number_of_shape = int(input("Choice the shape:\n1. Square\n2. Rectangular triangle\n3. Equilateral triangle\n4. Rhomb\n"))
-    symbol1 = ""
     symbol2 = ""
     space = ""
+
     if number_of_shape == 1:
         for i in range(10):
             symbol2 = "*" + "  " + symbol2
@@ -73,6 +73,14 @@ def task08_draw_shape():
                 print("*" + space + "*")
             elif j == 9:
                 print(symbol2)
+
+    if number_of_shape == 2:
+
+        for i in range(10):
+            symbol2 = "*" + "  " + symbol2
+            print(symbol2)
+
+
 
 
 
