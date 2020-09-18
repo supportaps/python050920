@@ -58,6 +58,7 @@ def task08_draw_shape():
     number_of_shape = int(input("Choice the shape:\n1. Square\n2. Rectangular triangle\n3. Equilateral triangle\n4. Rhomb\n"))
     symbol2 = ""
     space = ""
+    symbol3 = ""
 
     if number_of_shape == 1:
         for i in range(10):
@@ -80,9 +81,14 @@ def task08_draw_shape():
             symbol2 = "*" + "  " + symbol2
             print(symbol2)
 
+    if number_of_shape == 3:
 
-
-
+        for i in range(10):
+            symbol2 = "*" + "  " + symbol2
+            symbol3 = "   " + "*" + symbol2
+            for l in range(len(symbol2) - 4):
+                space = str(i).replace(str(i), " ") + space
+                print(symbol3 + symbol2)
 
 
 
