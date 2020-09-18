@@ -34,7 +34,7 @@ def traversed_path():
     speed = int(input("Input speed of the train (km / hour) : "))
     hours_to_move = int(input("How many hours it was moving : "))
     step = 1
-    km_per_path = 0
+
 
     for i in range(1,hours_to_move + step, step):
         if i == 1:
@@ -42,6 +42,21 @@ def traversed_path():
             print("--------------------")
         print(i, "             ", speed * i)
 
+def average_thickness_rain():
+
+    months = 12
+    step = 1
+    years = int(input("Input how many years : "))
+    rain = 0
+
+    for year in range(1, years + step, step):
+        for month in range(1, months + 1, step):
+            rain = int(input("Input raindrops in ml for year: " + str(year) + " and month: "+ str(month) + ": ")) + rain
+
+    print("Months: ", months * years)
+    print("Total raindrops in ml: ", rain)
+    print("Average raindrops in ml: ", rain / (months * years))
 
 if __name__== '__main__':
-    traversed_path()
+    average_thickness_rain()
+
