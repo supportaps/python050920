@@ -29,5 +29,19 @@ def budget_analyze():
     else:
         print(" The rest you saved: ", sum_per_month - sum_expences)
 
+def traversed_path():
+
+    speed = int(input("Input speed of the train (km / hour) : "))
+    hours_to_move = int(input("How many hours it was moving : "))
+    step = 1
+    km_per_path = 0
+
+    for i in range(1,hours_to_move + step, step):
+        if i == 1:
+            print("hour            path")
+            print("--------------------")
+        print(i, "             ", speed * i)
+
+
 if __name__== '__main__':
-    budget_analyze()
+    traversed_path()
