@@ -13,7 +13,7 @@ def main():
         total_purchase = float(input(" Input a purchase: "))
         FEDERAL_TAX = 0.025
         REGIONAL_TAX = 0.05
-        result = functions.tax_from_selling(total_purchase, FEDERAL_TAX, REGIONAL_TAX)
+        functions.tax_from_selling(total_purchase, FEDERAL_TAX, REGIONAL_TAX)
 
 if __name__ == "__main__":
     main()
