@@ -1,7 +1,32 @@
+import random
+
+def sum_calculation(elements_list):
+    sum = 0
+    for el in elements_list:
+        sum += el
+
+    average = sum / len(elements_list)
+    return sum, average
+
+
+def find_min(el_list):
+    mymin = el_list[0]
+    for el in el_list:
+        if el < mymin:
+            mymin = el
+    return mymin
+
+def find_max(el_list):
+    mymax = el_list[0]
+    for el in el_list:
+        if el > mymax:
+            mymax = el
+    return mymax
+
 #1. Общий объем продаж. Разработайте программу, которая просит пользователя ввести
 #продажи магазина за каждый день недели. Суммы должны быть сохранены в списке.
 #Примените цикл, чтобы вычислить общий объем продаж за неделю и показать результат.
-import random
+
 
 def general_total_selling():
 
@@ -44,15 +69,6 @@ def generator_random_value():
 #год, среднее ежемесячное количество дождевых осадков и месяцы с самым высоким и
 #самым низким количеством дождевых осадков.
 
-def sum_calculation(elements_list):
-    sum = 0
-    for el in elements_list:
-        sum += el
-
-    average = sum / len(elements_list)
-    return sum, average
-
-
 
 def stat_rain():
 
@@ -89,19 +105,7 @@ def stat_rain():
 #• сумму чисел в списке;
 #• среднее арифметическое значение чисел в списке.
 
-def find_min(el_list):
-    mymin = el_list[0]
-    for el in el_list:
-        if el < mymin:
-            mymin = el
-    return mymin
 
-def find_max(el_list):
-    mymax = el_list[0]
-    for el in el_list:
-        if el > mymax:
-            mymax = el
-    return mymax
 
 def analyse_numbers():
     x = 0
@@ -122,6 +126,47 @@ def analyse_numbers():
     print("Average value in the string is: ", average)
 
 
+#Проверка допустимости номера расходноrо счета. Среди исходного кода главы 7,
+#а также в подпапке data "Решений задач по программированию" соответствующей главы
+#вы найдете файл charge_accounts.txt. Этот файл содержит список допустимых номеров
+#расходных счетов компании. Каждый номер счета представляет собой семизначное число,
+#в частности 5658845.
+#Напишите программу, которая считывает содержимое файла в список. Затем эта программа
+#должна попросить пользователя ввести номер расходного счета. Программа
+#должна определить, что номер является допустимым, путем его поиска в списке. Если
+#число в списке имеется, то программа должна вывести сообщение, указывающее на то,
+#что номер допустимый. Если числа в списке нет, то программа должна вывести сообщение,
+#указывающее на то, что номер недопустимый.
+
+def check_number_from_file():
+
+    count = 0
+    number_of_count = 0
+    number_list = []
+    charge_accounts_file = open(r'C:\Users\yakovalenko\PycharmProjects\Python05_09_2020\ua\univer\base\day3\lesson03\Lesson03HW031\charge_accounts.txt', 'r')
+    file_contents = charge_accounts_file.readlines()
+
+    while True:
+        number_of_count = input("Input 7 symbols number: ")
+        for i in number_of_count:
+            count += 1
+        if count == 7:
+            break
+        else:
+            print("You have entered more or less then 7 symbols.")
+            count = 0
+
+
+    for item in file_contents:
+        if int(item.replace('\n', '')) == int(number_of_count):
+            print("The number you have entered", item.replace('\n', ''), " is appropriate")
+            break
+    else:
+        print("The number you have entered", item.replace('\n', ''), " isn't appropriate")
+
+
+
+
 
 if __name__ == '__main__':
-    analyse_numbers()
+    check_number_from_file()
