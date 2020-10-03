@@ -169,4 +169,4 @@ def check_number_from_file():
 
 
 if __name__ == '__main__':
-    check_number_from_file()
+    stat_rain()
