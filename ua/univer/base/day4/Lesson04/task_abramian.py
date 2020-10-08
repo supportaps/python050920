@@ -84,4 +84,4 @@ def matrix5(m = 5, n = 5, arr = [1, 2, 3, 4, 5], d = 2):
 #мент матрицы.
 
 if __name__ == '__main__':
-    matrix5()
+    matrix1(m = 10, n = 10)

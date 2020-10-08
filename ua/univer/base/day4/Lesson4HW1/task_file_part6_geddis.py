@@ -183,17 +183,22 @@ def task8():
 
 def task10_1():
 
-    wfile = open("golf.txt", "a")
-    wfile.write("Name" + "Surname" + "Score")
+    players_name_and_score = []
+    wfile = open("golf.txt", "w")
+    wfile.write("Name" + "\t" + "Score")
 
 
     while True:
         #wfile = open("golf.txt", "a")
-        name = input("Input the name of the player")
-        score = input("Input the score of the player")
+        number = int(input("Input '1' to add name and score or '2' to exit: "))
+        if number == 1:
+            name = input("Input the name of the player")
+            score = input("Input the score of the player")
+            players_name_and_score.append([name, score])
+        else:
+            break
 
-        wfile.write(name + score)
-
+    wfile.write(players_name_and_score)
 
 if __name__ == '__main__':
     task10_1()
