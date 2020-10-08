@@ -101,7 +101,7 @@ def check_encoding_of_file(name):
 
 if __name__ == '__main__':
 
-    names = ["zp-kviten-2019", "zp-lupen-2019"]
+    names = ["zp-kviten-2019", "zp-lupen-2019", "berezen-2019"]
     NAME = "zp-lupen-2019"
     FILENAME = NAME + "csv"
     for name in names:
