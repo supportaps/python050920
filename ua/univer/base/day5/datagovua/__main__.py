@@ -1,5 +1,6 @@
 import csv
 import json
+import matplotlib.pyplot as plt
 
 # def write_to_json_average():
 
@@ -28,20 +29,14 @@ def get_data_from_csv_file(name, encoding_of_file):
                 mydict = dict()
                 mydict["Average"] = average_by_users(users_list, key)
                 mydict["Max"] = min_by_users(users_list, key)
-                mydict["Min"] = min_by_users(users_list, key)
+                mydict["Min"] = max_by_users(users_list, key)
                 stat_dict[key] = mydict
 
         print(stat_dict)
         jsonData = json.dumps(stat_dict, ensure_ascii=False)
-        print(jsonData)
+        # print(jsonData)
         with open(name + "stat.json", "w") as file:
             file.write(jsonData)
-
-
-def print_info(users):
-    for user in users:
-        for key in user:
-            print(key, " - ", user[key])
 
 
 def average_by_users(users, key_name):
@@ -99,6 +94,35 @@ def check_encoding_of_file(name):
         return result['encoding']
 
 
+def graph():
+    x_coordinate = ["berezen-2019", "kviten-2019", "lupen-2019"]
+    y_coordinate = []
+    mydict = dict()
+    result_mydict = list()
+
+    names_json = ["berezen-2019stat.json", "zp-kviten-2019stat.json", "zp-lupen-2019stat.json"]
+    for name_json in names_json:
+        with open(name_json, "r") as json_file:
+            data_json = json_file.read()
+            mydict = json.loads(data_json)
+            result_mydict.append(mydict)
+    print("My dict: ", result_mydict)
+
+    for item in result_mydict:
+        for key in item:
+            # print(key, "-", item[key])
+            if key == 'Оплата по окладу':
+                print(item[key]['Average'])
+                y_coordinate.append(item[key]['Average'])
+
+    plt.plot(x_coordinate, y_coordinate)
+    plt.title('Data')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.grid(True)
+    plt.show()
+
+
 if __name__ == '__main__':
 
     names = ["zp-kviten-2019", "zp-lupen-2019", "berezen-2019"]
@@ -108,3 +132,4 @@ if __name__ == '__main__':
         encoding_of_file = check_encoding_of_file(name)
 
         get_data_from_csv_file(name, encoding_of_file)
+    graph()
