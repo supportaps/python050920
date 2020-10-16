@@ -1,10 +1,14 @@
 # -*- coding: utf8 -*-
-
+from datetime import date
+from ua.univer.base.day6.hw06oop.hwexercises06geddis import patient
 from ua.univer.base.day6.hw06oop.hwexercises06geddis.car import Car
 from ua.univer.base.day6.hw06oop.hwexercises06geddis.employee import Employee
+from ua.univer.base.day6.hw06oop.hwexercises06geddis.patient import Patient
 from ua.univer.base.day6.hw06oop.hwexercises06geddis.personaldata import personalData
 from ua.univer.base.day6.hw06oop.hwexercises06geddis.pet import Pet
+from ua.univer.base.day6.hw06oop.hwexercises06geddis.procedure import Procedure
 from ua.univer.base.day6.hw06oop.hwexercises06geddis.retailitem import retailItem
+
 
 
 def task1_class_Pet():
@@ -79,7 +83,54 @@ def task5_item():
     for item in create_item():
         print(f"{item.get_name()}, {item.get_description_of_item()}, {item.get_number_of_item()}, {item.get_prise()}")
 
+def task6_patient_and_procedures():
+    def input_data_patient_from_console(address, data_assistant, name, patients, phone):
+        name.append(input("Введите имя: "))
+        name.append(input("Введите фамилию: "))
+        name.append(input("Введите Отчество: "))
+        address.append(input("Введите адрес: "))
+        address.append(input("Введите город: "))
+        address.append(input("Введите область: "))
+        address.append(input("Введите почтовый индекс: "))
+        phone = input("Введите номер своего телефона: ")
+        data_assistant.append(input("Введите имя контактного лица: "))
+        data_assistant.append(input("Введите телефон контактного лица: "))
+        patient = patients.append(Patient(name, address, phone, data_assistant))
+        return patient
+
+    def get_3_procedures(today):
+        procedures = []
+        procedures.append(Procedure("Врачебный осмотр", today, "Врач: Ирвин", 250.00))
+        procedures.append(Procedure("Рентгноскопия", today, "Врач: Джемисон", 500.00))
+        procedures.append(Procedure("Анализ крови", today, "Врач: Смит", 200.00))
+        return procedures
+
+    today = date.today()
+    patients = []
+    procedures = []
+    state = 'д'
+    name = []
+    phone = ''
+    address = []
+    data_assistant = []
+    while state.lower() == 'д' or state == 'Д':
+
+        patients.append(input_data_patient_from_console(address, data_assistant, name, patients, phone))
+        procedures.append(get_3_procedures(today))
+
+
+        state = input("Введите н или д: ")
+
+
+    for patient_item in patients:
+        print(patient_item)
+
+    for procedures_item in procedures:
+        print(procedures_item)
+
+
+
 
 
 if __name__ == '__main__':
-    task5_item()
+    task6_patient_and_procedures()
