@@ -103,6 +103,7 @@ def task6_patient_and_procedures():
         procedures.append(Procedure("Врачебный осмотр", today, "Врач: Ирвин", 250.00))
         procedures.append(Procedure("Рентгноскопия", today, "Врач: Джемисон", 500.00))
         procedures.append(Procedure("Анализ крови", today, "Врач: Смит", 200.00))
+
         return procedures
 
     today = date.today()
