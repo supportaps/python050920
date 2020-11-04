@@ -38,7 +38,8 @@ if __name__ == '__main__':
     name_var = gui.vehicle_name_var.get()
     year_var = int(gui.vehicle_year_var.get())
     price_var = float(gui.vehicle_price_var.get())
-    print("TEST: ", f"{name_var}, {year_var}, {price_var}")
+    rb_var = gui.radio_var.get()
+    print("RadioButton value: ", f"{rb_var}")
     testobject = Plane(name_var ,1, price_var, 15000, year_var, 2, 20000)
     insert_to_db(testobject)
 
