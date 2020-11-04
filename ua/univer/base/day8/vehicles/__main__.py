@@ -3,6 +3,7 @@ import sqlite3
 from ua.univer.base.day8.vehicles.batmobile import BatMobile
 from ua.univer.base.day8.vehicles.car import Car
 from ua.univer.base.day8.vehicles.cargo import Cargo
+from ua.univer.base.day8.vehicles.gui.vehiclegui import VehicleGui
 from ua.univer.base.day8.vehicles.passenger import Passenger
 from ua.univer.base.day8.vehicles.plane import Plane
 from ua.univer.base.day8.vehicles.ship import Ship
@@ -33,6 +34,14 @@ def insert_to_db(vehicle):
 
 
 if __name__ == '__main__':
+    gui = VehicleGui()
+    name_var = gui.vehicle_name_var.get()
+    year_var = int(gui.vehicle_year_var.get())
+    price_var = float(gui.vehicle_price_var.get())
+    print("TEST: ", f"{name_var}, {year_var}, {price_var}")
+    testobject = Plane(name_var ,1, price_var, 15000, year_var, 2, 20000)
+    insert_to_db(testobject)
+
     #vehicle = Vehicle("An224",1,10000,1000,2000)
     plane1 = Plane("An24",1,10000,1000,2000,40,9000)
     plane2 = Plane("An148", 1, 20000, 1200, 2010, 90, 12000)
