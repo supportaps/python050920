@@ -63,18 +63,31 @@ class Controller():
             ship_vehicle = Ship(name_var_upd, 1, price_var_upd, 1000, year_var_upd, 40, "Odessa", 2323)
             self.update_entry_db(ship_vehicle)
 
-    def insert_to_db(self, vehicle):
+    def database_connection(self):
         conn_db = sqlite3.connect("vehicles.db")
         cursor = conn_db.cursor()
-        sql_insert = f"insert into vehicles(name, year, price) values ('{vehicle.name}','{vehicle.year}','{vehicle.price}')"
-        cursor.execute(sql_insert)
+        return conn_db, cursor
+
+    def close_database_connection(self, conn_db):
         conn_db.commit()
         conn_db.close()
 
+    def insert_to_db(self, vehicle):
+        conn_db, cursor = self.database_connection()
+        sql_insert = f"insert into vehicles(name, year, price) values ('{vehicle.name}','{vehicle.year}','{vehicle.price}')"
+        cursor.execute(sql_insert)
+        self.close_database_connection(conn_db)
+
+
+
     def update_entry_db(self, vehicle):
-        conn_db = sqlite3.connect("vehicles.db")
-        cursor = conn_db.cursor()
+        conn_db, cursor = self.database_connection()
         sql_update = f"update vehicles set price = '{vehicle.price}', year = '{vehicle.year}' where name = '{vehicle.name}'"
         cursor.execute(sql_update)
-        conn_db.commit()
-        conn_db.close()
+        self.close_database_connection(conn_db)
+
+    def delete_to_db(self, vehicle):
+        conn_db, cursor = self.database_connection()
+        sql_delete = f"delete from vehicles where name = '{vehicle.name}'"
+        cursor.execute(sql_delete)
+        self.close_database_connection(conn_db)
