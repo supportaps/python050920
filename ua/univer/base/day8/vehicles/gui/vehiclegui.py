@@ -11,7 +11,10 @@ class VehicleGui:
         self.input_vehicle_name_fr = tkinter.Frame(self.main_window)
         self.input_vehicle_name_lab = tkinter.Label(self.input_vehicle_name_fr,
                                                     text='Input name of vehicle: ')
-        self.vehicle_name_var = tkinter.StringVar()
+        self.vehicle_name_insert_var = tkinter.StringVar()
+        self.vehicle_name_insert_var.set(None)
+        self.vehicle_name_update_var = tkinter.StringVar()
+        self.vehicle_name_update_var.set(None)
         self.input_vehicle_name_ent = tkinter.Entry(self.input_vehicle_name_fr, width='10')
 
         self.input_vehicle_name_fr.pack()
@@ -22,7 +25,10 @@ class VehicleGui:
         self.input_vehicle_year_fr = tkinter.Frame(self.main_window)
         self.input_vehicle_year_lab = tkinter.Label(self.input_vehicle_year_fr,
                                                     text='Input year of vehicle: ')
-        self.vehicle_year_var = tkinter.StringVar()
+        self.vehicle_year_insert_var = tkinter.StringVar()
+        self.vehicle_year_insert_var.set(0)
+        self.vehicle_year_update_var = tkinter.StringVar()
+        self.vehicle_year_update_var.set(0)
         self.input_vehicle_year_ent = tkinter.Entry(self.input_vehicle_year_fr, width='10')
 
         self.input_vehicle_year_fr.pack()
@@ -33,18 +39,25 @@ class VehicleGui:
         self.input_vehicle_price_fr = tkinter.Frame(self.main_window)
         self.input_vehicle_price_lab = tkinter.Label(self.input_vehicle_price_fr,
                                                      text='Input price of vehicle: ')
-        self.vehicle_price_var = tkinter.StringVar()
+        self.vehicle_price_insert_var = tkinter.StringVar()
+        self.vehicle_price_insert_var.set(0)
+        self.vehicle_price_update_var = tkinter.StringVar()
+        self.vehicle_price_update_var.set(0)
         self.input_vehicle_price_ent = tkinter.Entry(self.input_vehicle_price_fr, width='10')
 
         self.input_vehicle_price_fr.pack()
         self.input_vehicle_price_lab.pack(side='left')
         self.input_vehicle_price_ent.pack(side='left')
 
-        # Frame4 button to send data----------------------------------------------------
+        # Frame4 button to send and update data----------------------------------------------------
         self.vehicle_input_fr = tkinter.Frame(self.main_window)
-        self.input_vehicle_button = tkinter.Button(self.vehicle_input_fr,
-                                                   text='Insert', command=self.get_input_data_and_choise)
-        self.input_vehicle_button.pack(side='left')
+        self.insert_vehicle_button = tkinter.Button(self.vehicle_input_fr,
+                                                   text='Insert', command=self.get_input_data_for_insert)
+        self.insert_vehicle_button.pack(side='left')
+        self.update_vehicle_button = tkinter.Button(self.vehicle_input_fr,
+                                                   text='Update', command=self.get_input_data_for_update)
+        self.update_vehicle_button.pack(side='left')
+
         self.vehicle_input_fr.pack()
 
         # Frame5 radiobuttons to choose appropriate vehicle-----------------------------
@@ -81,12 +94,13 @@ class VehicleGui:
         tkinter.mainloop()
 
 
-    def get_input_data_and_choise(self):
-        self.vehicle_name_var.set(self.input_vehicle_name_ent.get())
-        self.vehicle_year_var.set(self.input_vehicle_year_ent.get())
-        self.vehicle_price_var.set(self.input_vehicle_price_ent.get())
+    def get_input_data_for_insert(self):
+        self.vehicle_name_insert_var.set(self.input_vehicle_name_ent.get())
+        self.vehicle_year_insert_var.set(self.input_vehicle_year_ent.get())
+        self.vehicle_price_insert_var.set(self.input_vehicle_price_ent.get())
 
-
-
-
+    def get_input_data_for_update(self):
+        self.vehicle_name_update_var.set(self.input_vehicle_name_ent.get())
+        self.vehicle_year_update_var.set(self.input_vehicle_year_ent.get())
+        self.vehicle_price_update_var.set(self.input_vehicle_price_ent.get())
 
