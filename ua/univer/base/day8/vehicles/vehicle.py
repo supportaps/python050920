@@ -12,6 +12,22 @@ class Vehicle(ABC):
         self.year = year
 
     @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        self.__price = value
+
+    @property
     def year(self):
         return self.__year
 
